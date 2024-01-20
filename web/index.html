@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenLayers Map</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>abc A</h4>
+    <div id="map" class="map"></div>
+    <script>
+        
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }),
+                new ol.layer.Tile({
+                    source: new ol.source.TileWMS({
+                        url: 'http://localhost:8080/geoserver/ws1/wms',
+                        params: {
+                            'LAYERS': 'ws1:layer1',
+                            'TILED': true,
+                        },
+                        serverType: 'geoserver'
+                    }),
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([0, 0]),
+                zoom: 2
+            })
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+version: '3'
+services:
+
+  geoserver:
+    image: kartoza/geoserver:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - JVM_OPTS=-Xmx1g
+      - GEOSERVER_ADMIN_USER=admin
+      - GEOSERVER_ADMIN_PASSWORD=geoserver
+      - GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
+    volumes:
+      - ./geoserver/volume:/opt/geoserver/data_dir/geoserver_volume
+    networks:
+      - netw
+
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./web:/usr/share/nginx/html
+
+  postgres:
+    image: postgis/postgis:latest
+    restart: always
+    environment:
+      POSTGRES_DB: mydb
+      SCHEMA: public
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: passwd
+    volumes:
+      - ./postgres/volume/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - netw
+  
+      # - ./postgres/volume:/var/lib/postgresql/data
+      # - ./postgres/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    # volumes:
+    #   - ./postgres/volume:/var/lib/postgresql/data
+    #   - ./postgres/init:/docker-entrypoint-initdb.d
+
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=admin@pgadmin.org
+  #     - PGADMIN_DEFAULT_PASSWORD=admin
+  #   ports:
+  #     - "5050:80"
+  #   networks:
+  #     - netw
+  #   depends_on:
+  #     - postgres
+
+  util-geoserver:
+    image: python:3.8
+    volumes:
+      - ./util-geoserver/volume:/app
+    networks:
+      - netw
+    depends_on:
+      - geoserver
+    command: sh -c "pip install requests && python /app/send_request.py"
+
+
+networks:
+  netw:
+    driver: bridge
