@@ -9,3 +9,4 @@ VALUES (
     'Sample Point - Florianópolis',
     ST_GeomFromText('POINT(-48.564151 -27.593550)', 4326)
 );
+
