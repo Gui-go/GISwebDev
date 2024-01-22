@@ -4,7 +4,7 @@ import time
 ws_name = "ws1"
 ds_name = "ds1"
 layer_name = "layer1"
-layer_name2 = "br_uf_2022"
+layer_name2 = "shp_sc"
 auth = ('admin', 'geoserver')
 
 # GeoServer REST API endpoints
@@ -80,12 +80,12 @@ else:
         <projectionPolicy>FORCE_DECLARED</projectionPolicy>
     </featureType>
     '''
-    response_layer = requests.post(featuretype_url, data=layer_data, headers={'Content-type': 'text/xml'}, auth=auth)
-    print(f'Create Layer Status Code: {response_layer.status_code}')
-    print(f'Create Layer Response: {response_layer.text}')
+    response_layer1 = requests.post(featuretype_url, data=layer_data, headers={'Content-type': 'text/xml'}, auth=auth)
+    print(f'Create Layer Status Code: {response_layer1.status_code}')
+    print(f'Create Layer Response: {response_layer1.text}')
 
     # Create a new layer
-    layer_data = f'''
+    layer_data2 = f'''
     <featureType>
         <name>{layer_name2}</name>
         <nativeName>{layer_name2}</nativeName>
@@ -106,9 +106,9 @@ else:
         <projectionPolicy>FORCE_DECLARED</projectionPolicy>
     </featureType>
     '''
-    response_layer = requests.post(featuretype_url, data=layer_data, headers={'Content-type': 'text/xml'}, auth=auth)
-    print(f'Create Layer Status Code: {response_layer.status_code}')
-    print(f'Create Layer Response: {response_layer.text}')
+    response_layer2 = requests.post(featuretype_url, data=layer_data2, headers={'Content-type': 'text/xml'}, auth=auth)
+    print(f'Create Layer Status Code: {response_layer2.status_code}')
+    print(f'Create Layer Response: {response_layer2.text}')
 
 
     # Publish the layer
