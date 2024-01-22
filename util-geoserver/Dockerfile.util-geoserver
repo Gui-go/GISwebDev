@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+# Copy the script into the container
+COPY init/init_env.sh /usr/local/bin/
+
+# Give execute permissions to the script
+RUN chmod +x /usr/local/bin/init_env.sh
+
+# Run the script when the container starts
+CMD ["sh", "/usr/local/bin/init_env.sh"]
+

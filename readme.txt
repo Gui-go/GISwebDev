@@ -27,7 +27,7 @@ sudo apt install npm
 npx create-react-app react-app
 
 
-
+docker exec -it giswebdev_postgres_1 /bin/bash
 docker exec -it giswebdev_postgres_1 psql -U user -d mydb -h localhost -p 5432
 CREATE EXTENSION postgis;
 SELECT PostGIS_version();
@@ -76,3 +76,4 @@ curl -u admin:passwd -XGET http://localhost:8080/geoserver/rest/workspaces.json
 
 
 
+response = requests.post(f'http://admin:geoserver@geoserver:8080/geoserver/rest/workspaces', data=f'<workspace><name>ws1</name></workspace>', headers={'Content-type': 'text/xml'}).raise_for_status()

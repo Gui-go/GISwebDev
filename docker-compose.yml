@@ -1,53 +1,53 @@
 version: '3'
 services:
 
-  geoserver:
-    image: kartoza/geoserver:latest
-    ports:
-      - "8080:8080"
-    environment:
-      - JVM_OPTS=-Xmx1g
-      - GEOSERVER_ADMIN_USER=admin
-      - GEOSERVER_ADMIN_PASSWORD=geoserver
-      - GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
-    volumes:
-      - ./geoserver/volume:/opt/geoserver/data_dir/geoserver_volume
-    networks:
-      - netw
-
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile.nginx
     ports:
       - "80:80"
+    volumes:
+      - ./nginx/web:/usr/share/nginx/html
 
   postgres:
-    image: postgis/postgis:latest
-    restart: always
-    environment:
-      POSTGRES_DB: mydb
-      SCHEMA: public
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: passwd
-    volumes:
-      - ./postgres/volume/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile.postgres
     ports:
       - "5432:5432"
     networks:
       - netw
 
+  geoserver:
+    build:
+      context: ./geoserver
+      dockerfile: Dockerfile.geoserver
+    ports:
+      - "8080:8080"
+    networks:
+      - netw
 
   util-geoserver:
-    image: python:3.8
-    volumes:
-      - ./util-geoserver/volume:/app
+    build:
+      context: ./util-geoserver
+      dockerfile: Dockerfile.util-geoserver
     networks:
       - netw
     depends_on:
       - geoserver
-    command: sh -c "pip install requests && python /app/send_request.py"
 
+# to add shapefile to postgres
+  # util-postgres:
+  #   build:
+  #     context: ./util-postgres
+  #     dockerfile: Dockerfile.util-postgres
+  #   networks:
+  #     - netw
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./util-postgres/data:/volume_util-postgres/
 
 networks:
   netw:
