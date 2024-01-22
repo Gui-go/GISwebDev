@@ -1,11 +1,27 @@
-FROM alpine:latest
+# FROM alpine:latest
 
-# Copy the script into the container
-COPY init/init_env.sh /usr/local/bin/
+# # Copy the script into the container
+# COPY init/init_env.sh /usr/local/bin/
 
-# Give execute permissions to the script
-RUN chmod +x /usr/local/bin/init_env.sh
+# # Give execute permissions to the script
+# RUN chmod +x /usr/local/bin/init_env.sh
 
-# Run the script when the container starts
-CMD ["sh", "/usr/local/bin/init_env.sh"]
+# # Run the script when the container starts
+# CMD ["sh", "/usr/local/bin/init_env.sh"]
+
+# Use an official Python runtime as a parent image
+FROM python:3.8
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY /init/send_request.py /app
+
+# Upgrade pip and install required Python packages
+RUN pip install --upgrade pip && pip install requests
+
+# Define the command to run your script
+CMD ["python", "send_request.py"]
+
 

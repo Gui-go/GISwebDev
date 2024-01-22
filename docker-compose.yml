@@ -25,6 +25,8 @@ services:
       dockerfile: Dockerfile.geoserver
     ports:
       - "8080:8080"
+    depends_on:
+      - postgres
     networks:
       - netw
 
@@ -37,17 +39,16 @@ services:
     depends_on:
       - geoserver
 
-# to add shapefile to postgres
-  # util-postgres:
-  #   build:
-  #     context: ./util-postgres
-  #     dockerfile: Dockerfile.util-postgres
-  #   networks:
-  #     - netw
-  #   depends_on:
-  #     - postgres
-  #   volumes:
-  #     - ./util-postgres/data:/volume_util-postgres/
+  util-postgres:
+    build:
+      context: ./util-postgres
+      dockerfile: Dockerfile.util-postgres
+    networks:
+      - netw
+    depends_on:
+      - postgres
+    volumes:
+      - ./util-postgres/data:/volume_util-postgres/
 
 networks:
   netw:
