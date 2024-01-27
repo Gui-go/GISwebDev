@@ -20,29 +20,29 @@
     <h4>Florianópolis, Santa Catarina, on the map! OpenLayers map!! 3</h4>
     <div id="map" class="map"></div>
     <script>
-        
-         var map = new ol.Map({
-            target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                }),
-                new ol.layer.Tile({
-                    source: new ol.source.TileWMS({
-                        url: 'http://localhost:8080/geoserver/ws1/wms',
-                        params: {
-                            'LAYERS': 'ws1:layer1',
-                            'TILED': true,
-                        },
-                        serverType: 'geoserver'
-                    }),
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([0, 0]),
-                zoom: 2
-            })
-        });
+
+        var map = new ol.Map({
+                    target: 'map',
+                    layers: [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM()
+                        }),
+                        new ol.layer.Tile({
+                            source: new ol.source.TileWMS({
+                                url: 'http://localhost:8080/geoserver/rest/layers/ws1%3Alayer1.json',
+                                params: {
+                                    'LAYERS': 'ws1:layer1',
+                                    'TILED': true,
+                                },
+                                serverType: 'geoserver'
+                            }),
+                        })
+                    ],
+                    view: new ol.View({
+                        center: ol.proj.fromLonLat([0, 0]),
+                        zoom: 2
+                    })
+                });
 
     </script>
 </body>
