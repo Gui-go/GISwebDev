@@ -31,16 +31,6 @@
                     source: new ol.source.TileWMS({
                         url: 'http://localhost:8080/geoserver/ws1/wms',
                         params: {
-                            'LAYERS': 'ws1:shp_sc',
-                            'TILED': true,
-                        },
-                        serverType: 'geoserver'
-                    }),
-                }),
-                new ol.layer.Tile({
-                    source: new ol.source.TileWMS({
-                        url: 'http://localhost:8080/geoserver/ws1/wms',
-                        params: {
                             'LAYERS': 'ws1:layer1',
                             'TILED': true,
                         },
