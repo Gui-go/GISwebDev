@@ -39,17 +39,6 @@ services:
     depends_on:
       - geoserver
 
-  util-postgres:
-    build:
-      context: ./util-postgres
-      dockerfile: Dockerfile.util-postgres
-    networks:
-      - netw
-    depends_on:
-      - postgres
-    volumes:
-      - ./util-postgres/data:/data/
-
 networks:
   netw:
     driver: bridge
