@@ -59,11 +59,11 @@ else:
     print(f'Create Data Store Response: {response_datastore.text}')
 
     # Create a new layer
-    layer_data = f'''
+    layer_data1 = f'''
     <featureType>
-        <name>{layer_name}</name>
-        <nativeName>{layer_name}</nativeName>
-        <title>{layer_name}</title>
+        <name>{layer_name1}</name>
+        <nativeName>{layer_name1}</nativeName>
+        <title>{layer_name1}</title>
         <srs>EPSG:4326</srs>
         <nativeBoundingBox>
             <minx>-180.0</minx>
@@ -80,12 +80,36 @@ else:
         <projectionPolicy>FORCE_DECLARED</projectionPolicy>
     </featureType>
     '''
-    response_layer1 = requests.post(featuretype_url, data=layer_data, headers={'Content-type': 'text/xml'}, auth=auth)
+    response_layer1 = requests.post(featuretype_url, data=layer_data1, headers={'Content-type': 'text/xml'}, auth=auth)
     print(f'Create Layer Status Code: {response_layer1.status_code}')
     print(f'Create Layer Response: {response_layer1.text}')
 
     # Create a new layer
-
+    layer_data2 = f'''
+    <featureType>
+        <name>{layer_name2}</name>
+        <nativeName>{layer_name2}</nativeName>
+        <title>{layer_name2}</title>
+        <srs>EPSG:4326</srs>
+        <nativeBoundingBox>
+            <minx>-180.0</minx>
+            <maxx>180.0</maxx>
+            <miny>-90.0</miny>
+            <maxy>90.0</maxy>
+        </nativeBoundingBox>
+        <latLonBoundingBox>
+            <minx>-180.0</minx>
+            <maxx>180.0</maxx>
+            <miny>-90.0</miny>
+            <maxy>90.0</maxy>
+        </latLonBoundingBox>
+        <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+    </featureType>
+    '''
+    response_layer2 = requests.post(featuretype_url, data=layer_data2, headers={'Content-type': 'text/xml'}, auth=auth)
+    print(f'Create Layer Status Code: {response_layer2.status_code}')
+    print(f'Create Layer Response: {response_layer2.text}')
+#
 
     # Publish the layer
     publish_data = f'<task><operation>generate</operation><data><layer>{featuretype_url}</layer></data></task>'
