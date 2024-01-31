@@ -3,8 +3,8 @@ import time
 
 ws_name = "ws1"
 ds_name = "ds1"
-layer_name = "layer1"
-# layer_name2 = "shp_sc"
+layer_name1 = "layer1"
+layer_name2 = "shp_sc"
 auth = ('admin', 'geoserver')
 
 # GeoServer REST API endpoints
