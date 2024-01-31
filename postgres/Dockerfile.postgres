@@ -12,3 +12,5 @@ RUN apt install -y gdal-bin
 RUN rm -rf /var/lib/apt/lists/*
 
 COPY /init/create_tables.sql /docker-entrypoint-initdb.d/create_tables.sql
+RUN ogr2ogr -f "PostgreSQL" PG:"dbname=mydb user=user password=passwd host=localhost"  -nlt PROMOTE_TO_MULTI -lco GEOMETRY_NAME=wkb_geometry data/shp_sc/shp_sc.shp
+
