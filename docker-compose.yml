@@ -19,6 +19,17 @@ services:
     networks:
       - netw
 
+  util-postgres:
+    build:
+      context: ./util-postgres
+      dockerfile: Dockerfile.util-postgres
+    networks:
+      - netw
+    depends_on:
+      - postgres
+    volumes:
+      - ./util-postgres/data:/data/
+
   geoserver:
     build:
       context: ./geoserver
