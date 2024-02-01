@@ -9,11 +9,10 @@ FROM nginx:latest
 
 # Copy your website files to the default Nginx HTML directory
 # COPY ./web /usr/share/nginx/html
-# COPY ./init/nginx.conf /etc/nginx/nginx.conf
+COPY ./init/nginx.conf /etc/nginx/nginx.conf
 
 # Expose the default Nginx port
 EXPOSE 80
 
 # Command to run Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]
-
