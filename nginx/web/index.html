@@ -36,17 +36,17 @@
                                 },
                                 serverType: 'geoserver'
                             }),
-                        }),
-                        new ol.layer.Tile({
-                            source: new ol.source.TileWMS({
-                                url: '10.0.1.4:8080/geoserver/ws1/wms',
-                                params: {
-                                    'LAYERS': 'ws1:shp_sc',
-                                    'TILED': true,
-                                },
-                                serverType: 'geoserver'
-                            }),
-                        })
+                        })#,
+                        #new ol.layer.Tile({
+                        #    source: new ol.source.TileWMS({
+                        #        url: '10.0.1.4:8080/geoserver/ws1/wms',
+                        #        params: {
+                        #            'LAYERS': 'ws1:shp_sc',
+                        #            'TILED': true,
+                        #        },
+                        #        serverType: 'geoserver'
+                        #    }),
+                        #})
                     ],
                     view: new ol.View({
                         center: ol.proj.fromLonLat([0, 0]),
