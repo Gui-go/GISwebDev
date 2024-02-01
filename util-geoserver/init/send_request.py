@@ -85,30 +85,30 @@ else:
     print(f'Create Layer Response: {response_layer1.text}')
 
     # Create a new layer
-    layer_data2 = f'''
-    <featureType>
-        <name>{layer_name2}</name>
-        <nativeName>{layer_name2}</nativeName>
-        <title>{layer_name2}</title>
-        <srs>EPSG:4326</srs>
-        <nativeBoundingBox>
-            <minx>-180.0</minx>
-            <maxx>180.0</maxx>
-            <miny>-90.0</miny>
-            <maxy>90.0</maxy>
-        </nativeBoundingBox>
-        <latLonBoundingBox>
-            <minx>-180.0</minx>
-            <maxx>180.0</maxx>
-            <miny>-90.0</miny>
-            <maxy>90.0</maxy>
-        </latLonBoundingBox>
-        <projectionPolicy>FORCE_DECLARED</projectionPolicy>
-    </featureType>
-    '''
-    response_layer2 = requests.post(featuretype_url, data=layer_data2, headers={'Content-type': 'text/xml'}, auth=auth)
-    print(f'Create Layer Status Code: {response_layer2.status_code}')
-    print(f'Create Layer Response: {response_layer2.text}')
+#    layer_data2 = f'''
+#    <featureType>
+#        <name>{layer_name2}</name>
+#        <nativeName>{layer_name2}</nativeName>
+#        <title>{layer_name2}</title>
+#        <srs>EPSG:4326</srs>
+#        <nativeBoundingBox>
+#            <minx>-180.0</minx>
+#            <maxx>180.0</maxx>
+#            <miny>-90.0</miny>
+#            <maxy>90.0</maxy>
+#        </nativeBoundingBox>
+#        <latLonBoundingBox>
+#            <minx>-180.0</minx>
+#            <maxx>180.0</maxx>
+#            <miny>-90.0</miny>
+#            <maxy>90.0</maxy>
+#        </latLonBoundingBox>
+#        <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+#    </featureType>
+#    '''
+#    response_layer2 = requests.post(featuretype_url, data=layer_data2, headers={'Content-type': 'text/xml'}, auth=auth)
+#    print(f'Create Layer Status Code: {response_layer2.status_code}')
+#    print(f'Create Layer Response: {response_layer2.text}')
 
 
     # Publish the layer
