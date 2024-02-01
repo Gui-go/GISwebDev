@@ -48,7 +48,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./util-postgres/data:/volume_util-postgres/
+      - ./util-postgres/data:/data/
 
 networks:
   netw:
