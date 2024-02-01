@@ -1,14 +1,16 @@
 #!/bin/bash
 
-sleep 10
+# Function to check if PostgreSQL is ready
+is_postgres_ready() {
+  pg_isready -h postgres -U user -d mydb -q
+}
 
-echo "8888888888888888888888888888888888888888888888888888888888888888888888"
+# Wait for PostgreSQL to be ready
+until is_postgres_ready; do
+  echo "PostgreSQL is not ready yet. Waiting..."
+  sleep 1
+done
 
-ls -a
-
-# ogr2ogr -f "PostgreSQL" PG:"dbname=mydb user=user password=passwd host=postgres"  -nlt PROMOTE_TO_MULTI -lco GEOMETRY_NAME=wkb_geometry data/shp_sc/shp_sc.shp
-# ogr2ogr -f "PostgreSQL" PG:"dbname=mydb user=user password=passwd host=20.224.150.252 port=5432" -nlt PROMOTE_TO_MULTI -lco GEOMETRY_NAME=wkb_geometry -nln target_table_name data/shp_sc/shp_sc.shp
-
-echo "8888888888888888888888888888888888888888888888888888888888888888888888"
-
+# Run ogr2ogr command
+ogr2ogr -f "PostgreSQL" PG:"dbname=mydb user=user password=passwd host=postgres" -nlt PROMOTE_TO_MULTI -lco GEOMETRY_NAME=wkb_geometry data/shp_sc/shp_sc.shp
 
