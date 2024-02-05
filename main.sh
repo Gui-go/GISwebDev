@@ -1,9 +1,8 @@
 #!/bin/bash
 
+source ~/GISwebDev/env
+
 cd ~/GISwebDev/
-
-source ./env
-
 
 sudo apt update -y
 sudo apt upgrade -y
