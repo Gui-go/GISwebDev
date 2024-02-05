@@ -8,7 +8,7 @@ is_postgres_ready() {
 # Wait for PostgreSQL to be ready
 until is_postgres_ready; do
   echo "PostgreSQL is not ready yet. Waiting..."
-  sleep 1
+  sleep 3
 done
 
 # Run ogr2ogr command
