@@ -29,7 +29,7 @@
                         }),
                         new ol.layer.Tile({
                             source: new ol.source.TileWMS({
-                                url: 'http://20.224.150.252:8080/geoserver/ws1/wms',
+                                url: 'http://{{PUBLIC_IP}}:8080/geoserver/ws1/wms',
                                 params: {
                                     'LAYERS': 'ws1:shp_sc',
                                     'TILED': true,
@@ -39,7 +39,7 @@
                         }),
                         new ol.layer.Tile({
                             source: new ol.source.TileWMS({
-                                url: 'http://20.224.150.252:8080/geoserver/ws1/wms',
+                                url: 'http://{{PUBLIC_IP}}:8080/geoserver/ws1/wms',
                                 params: {
                                     'LAYERS': 'ws1:layer1',
                                     'TILED': true,
