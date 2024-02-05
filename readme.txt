@@ -84,3 +84,17 @@ sudo docker exec -it giswebdev_postgres_1 psql -U user -d mydb -c "\dt"
 
 
 
+Terraform main commands:
+  init          Prepare your working directory for other commands
+  validate      Check whether the configuration is valid
+  plan          Show changes required by the current configuration
+  apply         Create or update infrastructure
+  destroy       Destroy previously-created infrastructure
+
+
+
+
+
+
+
+
