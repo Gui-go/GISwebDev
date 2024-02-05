@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # source ".env"
-# source "./env"
-source ./env
+source "./env"
+#source ./env
 
 
 sudo apt update -y
