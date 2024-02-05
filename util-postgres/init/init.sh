@@ -1,5 +1,8 @@
 #!/bin/bash
 
+POSTGRES_DB=$(cat /run/secrets/postgres_db.txt)
+
+
 # Function to check if PostgreSQL is ready
 is_postgres_ready() {
   pg_isready -h postgres -U user -d $POSTGRES_DB -q

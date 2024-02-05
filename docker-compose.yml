@@ -49,7 +49,20 @@ services:
       - postgres
     volumes:
       - ./util-postgres/data:/data/
+    secrets:
+      - postgres_db
 
 networks:
   netw:
     driver: bridge
+
+secrets:
+  postgres_db:
+    file: ./secrets/postgres_db.txt
+
+  # postgres_user:
+  #   file: ./secrets/postgres_user.txt
+  # postgres_password:
+  #   file: ./secrets/postgres_password.txt
+
+

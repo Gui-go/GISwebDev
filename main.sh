@@ -4,8 +4,6 @@ cd ~/GISwebDev/
 
 . ~/GISwebDev/env     # Environment variables
 
-echo "Variable SERVER_IP set as $SERVER_IP"
-
 sudo apt update -y
 sudo apt upgrade -y
 
