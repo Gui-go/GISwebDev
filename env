@@ -1,3 +1,9 @@
-export SERVER_IP="20.16.160.171"
-export DATABASE_NAME="your_database"
-export API_KEY="your_api_key"
+export SERVER_IP         = "20.16.160.171"
+export DATABASE_NAME     = "your_database"
+export API_KEY           = "your_api_key"
+
+export POSTGRES_DB       = "mydb"
+export POSTGRES_USER     = "user"
+export POSTGRES_PASSWD   = "passwd"
+export POSTGRES_HOST     = "postgres"
+
