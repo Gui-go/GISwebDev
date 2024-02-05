@@ -167,3 +167,7 @@ resource "azurerm_network_interface_security_group_association" "tfazninsg" {
   network_interface_id      = azurerm_network_interface.tfaznic.id
   network_security_group_id = azurerm_network_security_group.tfaznsg.id
 }
+
+output "public_ip_address" {
+  value = azurerm_public_ip.tfazpubip.ip_address
+}
