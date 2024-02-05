@@ -2,7 +2,7 @@
 
 cd ~/GISwebDev/
 
-source "./env"
+. env     # Environment variables
 
 echo "Variable SERVER_IP set as $SERVER_IP"
 
