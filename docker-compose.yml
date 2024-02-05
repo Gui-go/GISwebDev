@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 services:
 
   nginx:
@@ -58,7 +58,7 @@ networks:
 
 secrets:
   postgres_db:
-    file: ./secrets/postgres_db.txt
+    file: ./secrets/postgres_db
 
   # postgres_user:
   #   file: ./secrets/postgres_user.txt
