@@ -1,6 +1,10 @@
 #!/bin/bash
 
-POSTGRES_DB=$(cat /run/secrets/postgres_db.txt)
+# POSTGRES_DB=$(cat /conf/secrets/postgres_db)
+
+POSTGRES_DB_FILE="$POSTGRES_DB_FILE"
+POSTGRES_DB=$(cat "$POSTGRES_DB_FILE")
+
 
 
 # Function to check if PostgreSQL is ready

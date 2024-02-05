@@ -1,7 +1,5 @@
 FROM ubuntu:latest
 
-ARG POSTGRES_DB
-
 RUN apt-get update
 RUN apt-get install -y postgresql-client
 RUN apt install -y gdal-bin
