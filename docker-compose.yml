@@ -49,8 +49,6 @@ services:
       - postgres
     volumes:
       - ./util-postgres/data:/data/
-    environment:
-      - POSTGRES_DB_FILE=/conf/secrets/postgres_db
 
 networks:
   netw:
