@@ -35,7 +35,7 @@ resource "azurerm_public_ip" "tfazpubip" {
 }
 
 resource "azurerm_network_interface" "tfaznic" {
-  name                = "${var.svc_name}-ni"
+  name                = "${var.svc_name}-nic"
   location            = "westeurope"
   resource_group_name = var.rg_name
   ip_configuration {
